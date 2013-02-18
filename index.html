@@ -1,6 +1,119 @@
+<!DOCTYPE html>
 <html>
-<head><title>The Space Suit: Mozilla Game On 2013</title></head>
+<head>
+<script>DEBUG=false;</script>
+<script src="lib/JSARToolKit.min.js"></script>
+<script src="lib/three.min.js"></script>
+<script src="lib/stats.min.js"></script>
+<script type="text/javascript"
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuLYxkFy816zlDI-RzIQ3Tka2FwzUMWDY&sensor=false">
+</script>
+<script data-main="application.js" src="require.js"></script>
+
+<style>
+html {
+    background: white;
+    color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+
+canvas {
+    border: 1px solid black;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+
+#googleMap {
+    position: absolute;
+    width: 640px;
+    height: 480px;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    visibility: hidden;
+}
+
+#debugCanvas {
+    border: 1px solid black;
+    display: inline;
+}
+
+#kit {
+}
+
+#panel {
+    float: left;
+}
+
+
+#panel {
+    float: left;
+    margin-left: 10px;
+}
+
+.panelHeader {
+    text-align: center;
+    background: rgb(200,200,200);
+}
+
+#controls {
+    min-height: 50px;
+}
+
+#kit {
+    min-height: 50px;
+}
+
+#output {
+    position: relative;
+    width: 640px;
+    height: 640px;
+}
+
+#game {
+    margin: auto;
+}
+
+
+#subsystem {
+    display:none;
+}
+
+.floating {
+    float: left;
+}
+</style>
+
+</head>
 <body>
-work in progress
+    <div id="game">
+        <div class="floating">
+            <div id="output">
+                <canvas id="display"></canvas>
+                <div id="googleMap"></div>
+            </div>
+        </div>
+        <div id="panel">
+            <div id="kit">
+                <div class="panelHeader">kit</div>
+            </div>
+            <div id="controls">
+                <div class="panelHeader">controls</div>
+            </div>
+            <div id="virtualCamera">
+                <div class="panelHeader">camera</div>
+                <button id="raiseVirtualCamera">raise</button>
+                <button id="lowerVirtualCamera">lower</button>
+            </div>
+        </div>
+        <div style="clear:all"></div>
+    </div>
+    <div id="subsystem"></div>
 </body>
 </html>
