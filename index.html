@@ -8,9 +8,6 @@
 <script type="text/javascript"
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuLYxkFy816zlDI-RzIQ3Tka2FwzUMWDY&sensor=false">
 </script>
-<script>
-    var require = { waitSeconds:120 };
-</script>
 <script data-main="application-built.js" src="require.js"></script>
 
 <style>
@@ -91,6 +88,39 @@ canvas {
 .floating {
     float: left;
 }
+
+.flicker {
+    pointer-events: none;
+    -moz-animation: twocolors 1s infinite;
+    -moz-animation-direction: alternate;
+    -webkit-animation: twocolors 1s infinite;
+    -webkit-animation-direction: alternate;
+}
+
+@-webkit-keyframes twocolors {
+    0% {
+        color: #222222;
+    }
+    50% {
+        color: #999999;
+    }
+    100% {
+        color:#222222;
+    }
+}
+
+@-moz-keyframes twocolors {
+    0% {
+        color: #222222;
+    }
+    50% {
+        color: #999999;
+    }
+    100% {
+        color:#222222;
+    }
+}
+
 </style>
 
 </head>
@@ -107,6 +137,9 @@ canvas {
                 <div class="panelHeader">kit</div>
             </div>
             <div id="controls">
+                <div>
+                    <input id="FLARThreshold" type="range" min="32" max="256" value="128"></input>
+                </div>
                 <div class="panelHeader">controls</div>
             </div>
             <div id="virtualCamera">
@@ -119,4 +152,17 @@ canvas {
     </div>
     <div id="subsystem"></div>
 </body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38695104-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+
+</script>
 </html>
