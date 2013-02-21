@@ -44,13 +44,9 @@ canvas {
     display: inline;
 }
 
-#kit {
-}
-
 #panel {
     float: left;
 }
-
 
 #panel {
     float: left;
@@ -70,10 +66,17 @@ canvas {
     min-height: 50px;
 }
 
+#things {
+    min-height: 50px;
+}
+
 #output {
     position: relative;
-    width: 640px;
-    height: 640px;
+    width: 642px;
+    height: 482px;
+    overflow: hidden;
+    padding-left:1px;
+    margin-left:2px;
 }
 
 #game {
@@ -83,6 +86,14 @@ canvas {
 
 #subsystem {
     display:none;
+}
+
+#virtualCamera {
+    display: none;
+}
+
+#augmentedCamera {
+    display: none;
 }
 
 .floating {
@@ -136,16 +147,22 @@ canvas {
             <div id="kit">
                 <div class="panelHeader">kit</div>
             </div>
+            <div id="things">
+                <div class="panelHeader">things</div>
+            </div>
             <div id="controls">
-                <div>
-                    <input id="FLARThreshold" type="range" min="32" max="256" value="128"></input>
-                </div>
                 <div class="panelHeader">controls</div>
             </div>
-            <div id="virtualCamera">
-                <div class="panelHeader">camera</div>
-                <button id="raiseVirtualCamera">raise</button>
-                <button id="lowerVirtualCamera">lower</button>
+            <div>
+                <div id="augmentedCamera">
+                    <div class="panelHeader">camera</div>
+                    <input id="FLARThreshold" type="range" min="32" max="256" value="128"></input>
+                </div>
+                <div id="virtualCamera">
+                    <div class="panelHeader">camera</div>
+                    <button id="raiseVirtualCamera">from shadowland</button>
+                    <button id="lowerVirtualCamera">into shadowland</button>
+                </div>
             </div>
         </div>
         <div style="clear:all"></div>
