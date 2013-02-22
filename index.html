@@ -51,6 +51,7 @@ canvas {
 #panel {
     float: left;
     margin-left: 10px;
+    min-width: 100px;
 }
 
 .panelHeader {
@@ -68,6 +69,15 @@ canvas {
 
 #things {
     min-height: 50px;
+}
+
+#speech {
+    min-height: 50px;
+    max-width: 200px;
+    border: 1px solid #333333;
+    padding: 5px;
+    margin-top: 25px;
+    margin-bottom: 50px;
 }
 
 #output {
@@ -144,11 +154,16 @@ canvas {
             </div>
         </div>
         <div id="panel">
+            <div id="speech">
+            Welcome to Application. Loading... 
+            </div>
             <div id="kit">
                 <div class="panelHeader">kit</div>
+                <div id="emptyKit"> currently unequipped. </div>
             </div>
             <div id="things">
                 <div class="panelHeader">things</div>
+                <div id="emptyThings"> currently possessionless. </div>
             </div>
             <div id="controls">
                 <div class="panelHeader">controls</div>
@@ -156,7 +171,7 @@ canvas {
             <div>
                 <div id="augmentedCamera">
                     <div class="panelHeader">camera</div>
-                    <input id="FLARThreshold" type="range" min="32" max="256" value="128"></input>
+                    <label>threshold:</label><input id="FLARThreshold" type="range" min="32" max="256" value="128"></input>
                 </div>
                 <div id="virtualCamera">
                     <div class="panelHeader">camera</div>
