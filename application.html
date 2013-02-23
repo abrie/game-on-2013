@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>DEBUG=false;</script>
+<script src="lib/JSARToolKit.min.js"></script>
+<script src="lib/three.min.js"></script>
+<script src="lib/stats.min.js"></script>
+<script type="text/javascript"
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuLYxkFy816zlDI-RzIQ3Tka2FwzUMWDY&sensor=false">
+</script>
+<script data-main="application-built.js" src="require.js"></script>
+
+<style>
+html {
+    background: white;
+    color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    border: 1px solid black;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+
+#googleMap {
+    position: absolute;
+    width: 640px;
+    height: 480px;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    visibility: hidden;
+}
+
+#debugCanvas {
+    border: 1px solid black;
+    display: inline;
+}
+
+#panel {
+    float: left;
+    margin-left: 10px;
+    min-width: 100px;
+}
+
+.panelHeader {
+    text-align: center;
+    background: rgb(200,200,200);
+}
+
+#controls {
+}
+
+#toggleControls {
+}
+
+#speech {
+    width: 225px;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    min-height: 150px;
+}
+
+#camera {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#inventory {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#kit {
+    min-height: 50px;
+}
+
+#things {
+    min-height: 50px;
+}
+
+
+#output {
+    position: relative;
+    width: 642px;
+    height: 482px;
+    overflow: hidden;
+    padding-left:1px;
+}
+
+#game {
+}
+
+#subsystem {
+    display:none;
+}
+
+#virtualCamera {
+    display: none;
+}
+
+#augmentedCamera {
+    display: none;
+}
+
+.floating {
+    float: left;
+}
+
+.attentionAnimation {
+    -moz-animation: attention 1s;
+    -webkit-animation: attention 1s;
+}
+
+.flicker {
+    pointer-events: none;
+    -moz-animation: twocolors 1s infinite;
+    -moz-animation-direction: alternate;
+    -webkit-animation: twocolors 1s infinite;
+    -webkit-animation-direction: alternate;
+}
+
+@-webkit-keyframes twocolors {
+    0% {
+        color: #222222;
+    }
+    50% {
+        color: #999999;
+    }
+    100% {
+        color:#222222;
+    }
+}
+
+@-moz-keyframes twocolors {
+    0% {
+        color: #222222;
+    }
+    50% {
+        color: #999999;
+    }
+    100% {
+        color:#222222;
+    }
+}
+
+@-webkit-keyframes attention {
+    0% {
+        background: black;
+        color: white;
+    }
+    100% {
+        background: white;
+        color:black;
+    }
+}
+
+@-moz-keyframes attention {
+    0% {
+        background: black;
+        color: white;
+    }
+    100% {
+        background: white;
+        color:black;
+    }
+}
+
+</style>
+
+</head>
+<body>
+    <div id="game">
+        <div class="floating">
+            <div id="output">
+                <canvas id="display"></canvas>
+                <div id="googleMap"></div>
+            </div>
+        </div>
+        <div id="panel">
+            <div id="speech" class="attentionAnimation">
+            Welcome to Application. Loading... 
+            </div>
+            <div id="camera">
+                <div id="controls"><div class="panelHeader">camera</div></div>
+                <div id="toggleControls"</div>
+                    <div id="augmentedCamera">
+                        <label>threshold:</label><input id="FLARThreshold" type="range" min="32" max="256" value="128"></input>
+                    </div>
+                    <div id="virtualCamera">
+                        <button id="raiseVirtualCamera">from shadowland</button>
+                        <button id="lowerVirtualCamera">into shadowland</button>
+                    </div>
+                </div>
+            </div>
+            <div id="inventory">
+                <div id="kit">
+                    <div class="panelHeader">kit</div>
+                    <div id="emptyKit"> currently unequipped. </div>
+                </div>
+                <div id="things">
+                    <div class="panelHeader">things</div>
+                    <div id="emptyThings"> currently possessionless. </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear:all"></div>
+    </div>
+    <div id="subsystem"></div>
+</body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38695104-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+
+</script>
+</html>
